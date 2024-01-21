@@ -9,9 +9,13 @@ import org.springframework.web.bind.annotation.RestController;
 public class WarehouseController {
 
     @PostMapping("/booking")
-    public ResponseEntity<String> handlePostRequest() {
-        return ResponseEntity.status(HttpStatus.OK).body("Success");
+    public ResponseEntity<Long> handlePostRequest() {
+        int random = (int)(Math.random() * 2);
+        if (random == 0) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+        } else {
+            return ResponseEntity.status(HttpStatus.OK).body(2L);
+        }
     }
-
 
 }
